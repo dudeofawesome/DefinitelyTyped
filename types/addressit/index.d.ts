@@ -23,31 +23,31 @@ declare namespace Addressit {
         /** Postal code */
         postalcode: number | string;
 
-        _extractStreetParts (startIndex: number, streetPartsLength?: number): void;
+        _extractStreetParts(startIndex: number, streetPartsLength?: number): void;
         /**
          * The clean function is used to clean up an address string. It is designed to remove any parts of the text that prevent effective
          * parsing of the address string.
          */
-        clean (cleaners?: (Function | RegExp)[]): this;
+        clean(cleaners?: Array<(text: string) => string> | RegExp[]): this;
         /**
          * The extract function is used to extract the specified field from the raw parts that have previously been split from the input text.
          * If successfully located then the field will be updated from the parts and that part removed from the parts list.
          */
-        extract (fieldName: string, regexes: RegExp | RegExp[]): this;
+        extract(fieldName: string, regexes: RegExp | RegExp[]): this;
         /**
          * This function is used to parse the address parts and locate any parts that look to be related to a street address.
          * @param {RegExp} [regexes=[]]
          */
-        extractStreet (regexes?: RegExp[], reSplitStreet?: RegExp, reNoStreet?: RegExp): this;
+        extractStreet(regexes?: RegExp[], reSplitStreet?: RegExp, reNoStreet?: RegExp): this;
         /**
          * The finalize function takes any remaining parts that have not been extracted as other information, and pushes those fields into a
          * generic `regions` field.
          */
-        finalize (): this;
+        finalize(): this;
         /** Split the address into it's component parts, and remove any empty parts */
-        split (separator?: string): this;
+        split(separator?: string): this;
         /** Convert the address to a string representation */
-        toString (): string;
+        toString(): string;
     }
 
     interface AddressitOptions {
